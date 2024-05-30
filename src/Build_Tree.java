@@ -21,6 +21,10 @@ public class Build_Tree {
 
         System.out.println();
         System.out.println( "height of tree : "  +  binaryTree.height(root));
+
+        System.out.println("total nodes : " + binaryTree.countNodes(root));
+
+        System.out.println("sum of nodes : " + binaryTree.sumOfNodes(root));
     }
 
 }
@@ -105,6 +109,26 @@ class BinaryTree {
         int rightHeight = height(root.right);
 
         return Math.max(leftHeight, rightHeight) + 1;
+    }
+
+    public int countNodes(Node root){
+        if (root == null){
+            return 0;
+        }
+        int leftCount = countNodes(root.left);
+        int rightCount = countNodes(root.right);
+
+        return leftCount + rightCount + 1;
+    }
+
+    public int sumOfNodes(Node root){
+        if (root == null){
+            return 0;
+        }
+        int leftSum = sumOfNodes(root.left);
+        int rightSum = sumOfNodes(root.right);
+
+        return leftSum + rightSum + root.data;
     }
 }
 
