@@ -18,6 +18,9 @@ public class Build_Tree {
 
         System.out.println();
         binaryTree.levelOrder(root);
+
+        System.out.println();
+        System.out.println( "height of tree : "  +  binaryTree.height(root));
     }
 
 }
@@ -91,6 +94,17 @@ class BinaryTree {
                 }
             }
         }
+    }
+
+    public  int height(Node root){
+        if (root == null){
+            return 0;
+        }
+
+        int leftHeight = height(root.left);
+        int rightHeight = height(root.right);
+
+        return Math.max(leftHeight, rightHeight) + 1;
     }
 }
 
