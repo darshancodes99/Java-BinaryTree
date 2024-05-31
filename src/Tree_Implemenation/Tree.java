@@ -11,10 +11,15 @@ public class Tree {
         binaryTree.root = new Node(10);
         binaryTree.root.left = new Node(20);
         binaryTree.root.right = new Node(30);
-        binaryTree.root.left.left = new Node(40);
-        binaryTree.root.left.right = new Node(50);
-        binaryTree.root.right.left = new Node(60);
-        binaryTree.root.right.right = new Node(70);
+//        binaryTree.root.left.left = new Node(40);
+//        binaryTree.root.left.right = new Node(50);
+//        binaryTree.root.right.left = new Node(60);
+//        binaryTree.root.right.right = new Node(70);
+
+        BinaryTree binaryTree1 = new BinaryTree();
+        binaryTree1.root = new Node(10);
+        binaryTree1.root.left = new Node(20);
+        binaryTree1.root.right = new Node(30);
 
         binaryTree.levelOrder(binaryTree.root);
         System.out.println();
@@ -49,6 +54,8 @@ public class Tree {
 
         binaryTree.printPostOrder(node);
 
+        System.out.println();
+        System.out.println( binaryTree.isSameTree(binaryTree.root, binaryTree1.root));
     }
 
     public static void findNthNode(Node root, int n) {
@@ -146,6 +153,17 @@ class BinaryTree {
         int rightCount = countNodes(root.right);
 
         return leftCount + rightCount + 1;
+    }
+
+    public boolean isSameTree(Node p, Node q){
+        if(p == null && q == null){
+            return true;
+        }
+        if (p == null || q == null || p.data != q.data){
+            return false;
+        }
+
+        return isSameTree(p.left, q.left) && isSameTree(p.right, q.right);
     }
 
 }
