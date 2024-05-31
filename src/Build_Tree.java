@@ -130,6 +130,7 @@ class BinaryTree {
 
         return leftSum + rightSum + root.data;
     }
+
 }
 
 class Node {
