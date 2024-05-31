@@ -11,10 +11,6 @@ public class Tree {
         binaryTree.root = new Node(10);
         binaryTree.root.left = new Node(20);
         binaryTree.root.right = new Node(30);
-//        binaryTree.root.left.left = new Node(40);
-//        binaryTree.root.left.right = new Node(50);
-//        binaryTree.root.right.left = new Node(60);
-//        binaryTree.root.right.right = new Node(70);
 
         BinaryTree binaryTree1 = new BinaryTree();
         binaryTree1.root = new Node(10);
@@ -56,6 +52,8 @@ public class Tree {
 
         System.out.println();
         System.out.println( binaryTree.isSameTree(binaryTree.root, binaryTree1.root));
+
+        System.out.println(binaryTree.isSameTreeQueue(binaryTree.root, binaryTree1.root));
     }
 
     public static void findNthNode(Node root, int n) {
@@ -79,16 +77,17 @@ class BinaryTree {
         if (arr == null || arr.length == 0) {
             return null;
         }
+
         Node root = new Node(arr[0]);
         Queue<Node> q = new LinkedList<>();
         q.add(root);
         int i = 1;
         while (i < arr.length) {
             Node curr = q.remove();
-            if (i < arr.length) {
-                curr.left = new Node(arr[i++]);
-                q.add(curr.left);
-            }
+
+            curr.left = new Node(arr[i++]);
+            q.add(curr.left);
+
             if (i < arr.length) {
                 curr.right = new Node(arr[i++]);
                 q.add(curr.right);
@@ -164,6 +163,30 @@ class BinaryTree {
         }
 
         return isSameTree(p.left, q.left) && isSameTree(p.right, q.right);
+    }
+
+    public boolean isSameTreeQueue(Node p, Node q){
+        Queue<Node> queue = new LinkedList<>();
+        queue.add(p);
+        queue.add(q);
+
+        while (!queue.isEmpty()){
+            Node f = queue.poll();
+            Node s = queue.poll();
+
+            if (f == null && s == null){
+                continue;
+            } else if (f == null || s == null || f.data != s.data) {
+                return false;
+            }
+
+            queue.add(f.left);
+            queue.add(s.left);
+            queue.add(f.right);
+            queue.add(s.right);
+        }
+
+        return true;
     }
 
 }
