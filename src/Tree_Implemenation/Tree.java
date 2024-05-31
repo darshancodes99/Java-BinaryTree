@@ -33,7 +33,7 @@ public class Tree {
         findNthNode(binaryTree.root, 3);
         System.out.println();
 
-        int[] arr = {1, 2, 3, 4, 5};
+        int[] arr = {1, 2, 3, 4, 5, 6, 7, 8, 9 ,10};
 
         Node node = binaryTree.createTreeFromArray(arr);
         System.out.println(node.data);
@@ -67,7 +67,6 @@ public class Tree {
 
 class BinaryTree {
     Node root;
-    static int index = 0;
 
     public Node createTreeFromArray(int[] arr) {
         if (arr == null || arr.length == 0) {
