@@ -1,5 +1,6 @@
 package Tree_Implemenation;
 
+import java.net.ServerSocket;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -34,7 +35,7 @@ public class Tree {
         findNthNode(binaryTree.root, 3);
         System.out.println();
 
-        int[] arr = {1, 2, 3, 4, 5, 6, 7, 8, 9 ,10};
+        int[] arr = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
 
         Node node = binaryTree.createTreeFromArray(arr);
         System.out.println(node.data);
@@ -54,6 +55,8 @@ public class Tree {
         System.out.println( binaryTree.isSameTree(binaryTree.root, binaryTree1.root));
 
         System.out.println(binaryTree.isSameTreeQueue(binaryTree.root, binaryTree1.root));
+
+        System.out.println(findNthElement(binaryTree.root, 20));
     }
 
     public static void findNthNode(Node root, int n) {
@@ -68,6 +71,19 @@ public class Tree {
         }
         findNthNode(root.right, n);
     }
+
+    public static boolean findNthElement(Node root, int n) {
+        if (root == null) {
+            return false;
+        }
+
+        if (root.data == n) {
+            return true;
+        }
+
+        return  findNthElement(root.left, n) || findNthElement(root.right, n);
+    }
+
 }
 
 class BinaryTree {
