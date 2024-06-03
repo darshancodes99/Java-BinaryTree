@@ -49,7 +49,7 @@ public class spiral_level_traversal {
                     }
                 }
             }
-            flag = false;
+            flag = !flag;
         }
 
     }
