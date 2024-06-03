@@ -17,45 +17,39 @@ public class spiral_level_traversal {
         binaryTree.root.right.right.right = new Node(100);
 
 
-
         SpiralTraversal(binaryTree.root);
     }
 
-    public static void SpiralTraversal(Node root){
+    public static void SpiralTraversal(Node root) {
         Deque<Node> deque = new LinkedList<>();
         deque.add(root);
         boolean flag = true;
 
-        while (!deque.isEmpty()){
+        while (!deque.isEmpty()) {
             int size = deque.size();
-            for (int i = 0; i < size; i++){
+            for (int i = 0; i < size; i++) {
                 Node node;
                 if (flag) {
-                  node = deque.pollFirst();
-                } else {
-                   node = deque.pollLast();
-                }
-
-                System.out.print(node.data + " ");
-
-                if (flag){
-                    if (node.left != null){
+                    node = deque.pollFirst();
+                    System.out.print(node.data + " ");
+                    if (node.left != null) {
                         deque.addLast(node.left);
                     }
-                    if (node.right != null){
+                    if (node.right != null) {
                         deque.addLast(node.right);
                     }
                 } else {
-                    if (node.right != null){
+                    node = deque.pollLast();
+                    System.out.print(node.data + " ");
+                    if (node.right != null) {
                         deque.addFirst(node.right);
                     }
-                    if (node.left != null){
+                    if (node.left != null) {
                         deque.addFirst(node.left);
                     }
                 }
             }
-
-            flag = !flag;
+            flag = false;
         }
 
     }
