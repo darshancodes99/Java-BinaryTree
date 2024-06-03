@@ -12,6 +12,12 @@ public class Tree {
         binaryTree.root = new Node(10);
         binaryTree.root.left = new Node(20);
         binaryTree.root.right = new Node(30);
+        binaryTree.root.left.left = new Node(40);
+        binaryTree.root.left.right = new Node(50);
+        binaryTree.root.right.left = new Node(60);
+        binaryTree.root.right.right = new Node(70);
+        binaryTree.root.left.left.left = new Node(80);
+        binaryTree.root.right.right.right = new Node(100);
 
         BinaryTree binaryTree1 = new BinaryTree();
         binaryTree1.root = new Node(10);
