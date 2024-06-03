@@ -22,15 +22,15 @@ public class inorder_Stack {
         Node current = root;
 
         while (current != null || !stack.isEmpty()) {
-            while (current != null) {
+            if (current != null) {
                 stack.push(current);
                 current = current.left;
+            } else {
+                current = stack.pop();
+                System.out.print(current.data + " ");
+                current = current.right;
             }
 
-            current = stack.pop();
-            System.out.print(current.data + " ");
-
-            current = current.right;
         }
     }
 }
