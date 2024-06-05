@@ -21,10 +21,9 @@ public class BST {
 
         binaryST.delete(100);
 
+        binaryST.delete(80);
+
         binaryST.printInOrder(binaryST.root);
-
-
-
 
 
         // create tree from array
@@ -76,7 +75,8 @@ class BinaryST {
     public int minValue(Node root){
         int min = root.val;
         while (root.left != null){
-            min = root.left.val;
+            root = root.left;
+            min = root.val;
         }
         return min;
     }
@@ -97,6 +97,10 @@ class BinaryST {
         } else {
             if (root.left == null && root.right == null){
                 return null;
+            } else if (root.left == null) {
+                return root.right;
+            } else if (root.right == null) {
+                return root.left;
             }
             root.val = minValue(root.right);
             root.right = delete(root.right, root.val);
