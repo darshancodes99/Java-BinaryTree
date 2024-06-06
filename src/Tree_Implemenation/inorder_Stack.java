@@ -30,7 +30,6 @@ public class inorder_Stack {
                 System.out.print(current.data + " ");
                 current = current.right;
             }
-
         }
     }
 }
