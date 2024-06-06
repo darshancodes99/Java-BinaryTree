@@ -4,24 +4,16 @@ public class BST {
 
     public static void main(String[] args) {
         BinaryST binaryST = new BinaryST();
-        binaryST.insert(80);
-        binaryST.insert(60);
-        binaryST.insert(100);
-
-        binaryST.printInOrder(binaryST.root);
-
-        System.out.println(binaryST.searchNode(binaryST.root, 80));
-
-        binaryST.delete(60);
-
-        binaryST.insert(10);
         binaryST.insert(20);
-        binaryST.insert(90);
-        binaryST.insert(120);
+        binaryST.insert(10);
+        binaryST.insert(5);
+        binaryST.insert(8);
+        binaryST.insert(30);
+        binaryST.insert(25);
+        binaryST.insert(35);
 
-        binaryST.delete(100);
+        binaryST.delete(20);
 
-        binaryST.delete(80);
 
         binaryST.printInOrder(binaryST.root);
 
@@ -75,8 +67,8 @@ class BinaryST {
     public int minValue(Node root){
         int min = root.val;
         while (root.left != null){
+            min = root.left.val;
             root = root.left;
-            min = root.val;
         }
         return min;
     }
